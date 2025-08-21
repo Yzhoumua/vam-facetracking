@@ -118,9 +118,9 @@ namespace FacialTrackerVamPlugin
 
         public static void Tongue()
         {
-            float vInOut = 1 - SRanipalMorphLibrary.Tongue_LongStep1;
+            float vInOut = Mathf.Clamp01(SRanipalMorphLibrary.Tongue_LongStep1);
 
-            float vLength = SRanipalMorphLibrary.Tongue_LongStep2 / factorDivisorTongueStep2;
+            float vLength = Mathf.Clamp01(SRanipalMorphLibrary.Tongue_LongStep2 / factorDivisorTongueStep2);
 
             float vRaiseLower = 0;
             if (SRanipalMorphLibrary.Tongue_Up > 0)
@@ -129,10 +129,11 @@ namespace FacialTrackerVamPlugin
             }
             else if (SRanipalMorphLibrary.Tongue_Down > 0)
             {
-                vRaiseLower = 0 - (SRanipalMorphLibrary.Tongue_Up / factorDivisorTongueUp);
+                vRaiseLower = 0 - (SRanipalMorphLibrary.Tongue_Down / factorDivisorTongueUp);
             }
+            vRaiseLower = Mathf.Clamp(vRaiseLower, -1f, 1f);
 
-            float vRoll = SRanipalMorphLibrary.Tongue_Roll;
+            float vRoll = Mathf.Clamp(SRanipalMorphLibrary.Tongue_Roll, -1f, 1f);
 
             float vSideSide = 0;
             if (SRanipalMorphLibrary.Tongue_Right > 0)
@@ -143,10 +144,11 @@ namespace FacialTrackerVamPlugin
             {
                 vSideSide = 0 - SRanipalMorphLibrary.Tongue_Left;
             }
+            vSideSide = Mathf.Clamp(vSideSide, -1f, 1f);
 
             _setMorphValue(DAZMorphLibrary.TongueInOut, vInOut * factorGlobal);
             _setMorphValue(DAZMorphLibrary.TongueLength, vLength * factorGlobal);
-            _setMorphValue(DAZMorphLibrary.TongueRaiseLower, 0.3f+vRaiseLower * factorGlobal);
+            _setMorphValue(DAZMorphLibrary.TongueRaiseLower, vRaiseLower * factorGlobal);
             _setMorphValue(DAZMorphLibrary.TongueRoll2, vRoll * factorGlobal * 2.5f);
             _setMorphValue(DAZMorphLibrary.TongueSideSide, vSideSide * factorGlobal);
 
