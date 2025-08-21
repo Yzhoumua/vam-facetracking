@@ -118,7 +118,7 @@ namespace FacialTrackerVamPlugin
 
         public static void Tongue()
         {
-            float vInOut = 1 - SRanipalMorphLibrary.Tongue_LongStep1;
+            float vInOut = Mathf.Clamp(SRanipalMorphLibrary.Tongue_LongStep1, 0f, 1f);
 
             float vLength = SRanipalMorphLibrary.Tongue_LongStep2 / factorDivisorTongueStep2;
 
