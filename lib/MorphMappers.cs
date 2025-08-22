@@ -163,6 +163,7 @@ namespace FacialTrackerVamPlugin
             _setMorphValue(DAZMorphLibrary.TongueInOut, vInOut * factorGlobal);
             _setMorphValue(DAZMorphLibrary.TongueLength, vLength * factorGlobal);
             _setMorphValue(DAZMorphLibrary.TongueRaiseLower, vRaiseLower * factorGlobal);
+
             _setMorphValue(DAZMorphLibrary.TongueUpDown, vRaiseLower * 0.5f * factorGlobal);
             _setMorphValue(DAZMorphLibrary.TongueRoll1, vRoll * factorGlobal * 2.5f);
             _setMorphValue(DAZMorphLibrary.TongueRoll2, vRoll * factorGlobal * 2.5f);
@@ -171,6 +172,7 @@ namespace FacialTrackerVamPlugin
             _setMorphValue(DAZMorphLibrary.TongueCenterDip, vRoll * factorGlobal * 2.5f);
             _setMorphValue(DAZMorphLibrary.TongueTwist, vRoll * factorGlobal * 2.5f);
             _setMorphValue(DAZMorphLibrary.TongueSideSide, vSideSide * factorGlobal);
+
 
         }
 
