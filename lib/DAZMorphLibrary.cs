@@ -49,6 +49,7 @@ namespace FacialTrackerVamPlugin
         public static DAZMorph TongueTwist;
         public static DAZMorph TongueUpDown;
 
+
         // Other properties
         private static GenerateDAZMorphsControlUI morphUI;
         private static float defaultMorphValue;
@@ -137,6 +138,7 @@ namespace FacialTrackerVamPlugin
                     "BJ Cheeks - Suck Right"
                 );
 
+
                 TongueInOut = _initMorph("Tongue In-Out");
                 TongueLength = _initMorph("Tongue Length");
                 TongueRaiseLower = _initMorph("Tongue Raise-Lower");
@@ -148,6 +150,7 @@ namespace FacialTrackerVamPlugin
                 TongueCurl = _initMorph("Tongue Curl");
                 TongueTwist = _initMorph("Tongue Twist");
                 TongueUpDown = _initMorph("Tongue Up-Down");
+
 				
 				//added
 				JawChew = _initMorph(
@@ -173,6 +176,7 @@ namespace FacialTrackerVamPlugin
                     "EyeSquint_L"
 				);
 
+
                 BrowDown_L = _initMorph(
                     "Jackaroo.JarModularExpressions.2:/Custom/Atom/Person/Morphs/female/Jackaroo/JaRExpressions1.2/BrowD_L.vmi",
                     "BrowD_L"
@@ -197,6 +201,7 @@ namespace FacialTrackerVamPlugin
                     "Jackaroo.JarModularExpressions.2:/Custom/Atom/Person/Morphs/female/Jackaroo/JaRExpressions1.2/BrowU_R.vmi",
                     "BrowU_R"
                 );
+
             }
             catch (Exception e)
             {
