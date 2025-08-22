@@ -9,6 +9,15 @@ namespace FacialTrackerVamPlugin
 {
     public class SRanipalMorphLibrary
     {
+        private float ParseFloat(JSONClass node, params string[] keys)
+        {
+            foreach (var k in keys)
+            {
+                if (node.HasKey(k) && float.TryParse(node[k], out float v)) return v;
+            }
+            return 0f;
+        }
+
         public static float Jaw_Right = 0;
         public static float Jaw_Left = 0;
         public static float Jaw_Forward = 0;
@@ -69,10 +78,10 @@ namespace FacialTrackerVamPlugin
         {
             try
             {
-                float.TryParse(sranipalValues["Jaw_Right"], out Jaw_Right);
-                float.TryParse(sranipalValues["Jaw_Left"], out Jaw_Left);
-                float.TryParse(sranipalValues["Jaw_Forward"], out Jaw_Forward);
-                float.TryParse(sranipalValues["Jaw_Open"], out Jaw_Open);
+                Jaw_Right = ParseFloat(sranipalValues, "Jaw_Right", "JawRight");
+                Jaw_Left = ParseFloat(sranipalValues, "Jaw_Left", "JawLeft");
+                Jaw_Forward = ParseFloat(sranipalValues, "Jaw_Forward", "JawForward");
+                Jaw_Open = ParseFloat(sranipalValues, "Jaw_Open", "JawOpen");
                 float.TryParse(sranipalValues["Mouth_Ape_Shape"], out Mouth_Ape_Shape);
                 float.TryParse(sranipalValues["Mouth_Upper_Right"], out Mouth_Upper_Right); // NOT CURRENTLY USED
                 float.TryParse(sranipalValues["Mouth_Upper_Left"], out Mouth_Upper_Left); // NOT CURRENTLY USED
@@ -80,28 +89,33 @@ namespace FacialTrackerVamPlugin
                 float.TryParse(sranipalValues["Mouth_Lower_Left"], out Mouth_Lower_Left); // NOT CURRENTLY USED
                 float.TryParse(sranipalValues["Mouth_Upper_Overturn"], out Mouth_Upper_Overturn); // NOT CURRENTLY USED
                 float.TryParse(sranipalValues["Mouth_Lower_Overturn"], out Mouth_Lower_Overturn); // NOT CURRENTLY USED
-                float.TryParse(sranipalValues["Mouth_Pout"], out Mouth_Pout);
-                float.TryParse(sranipalValues["Mouth_Smile_Right"], out Mouth_Smile_Right);
-                float.TryParse(sranipalValues["Mouth_Smile_Left"], out Mouth_Smile_Left);
-                float.TryParse(sranipalValues["Mouth_Sad_Right"], out Mouth_Sad_Right);
-                float.TryParse(sranipalValues["Mouth_Sad_Left"], out Mouth_Sad_Left);
-                float.TryParse(sranipalValues["Cheek_Puff_Right"], out Cheek_Puff_Right);
-                float.TryParse(sranipalValues["Cheek_Puff_Left"], out Cheek_Puff_Left);
-                float.TryParse(sranipalValues["Cheek_Suck"], out Cheek_Suck);
-                float.TryParse(sranipalValues["Mouth_Upper_UpRight"], out Mouth_Upper_UpRight);
-                float.TryParse(sranipalValues["Mouth_Upper_UpLeft"], out Mouth_Upper_UpLeft);
-                float.TryParse(sranipalValues["Mouth_Lower_DownRight"], out Mouth_Lower_DownRight);
-                float.TryParse(sranipalValues["Mouth_Lower_DownLeft"], out Mouth_Lower_DownLeft);
+                Mouth_Pout = ParseFloat(sranipalValues, "Mouth_Pout", "MouthPout");
+                Mouth_Smile_Right = ParseFloat(sranipalValues, "Mouth_Smile_Right", "MouthSmileRight");
+                Mouth_Smile_Left = ParseFloat(sranipalValues, "Mouth_Smile_Left", "MouthSmileLeft");
+                Mouth_Sad_Right = ParseFloat(sranipalValues, "Mouth_Sad_Right", "MouthFrownRight");
+                Mouth_Sad_Left = ParseFloat(sranipalValues, "Mouth_Sad_Left", "MouthFrownLeft");
+                Cheek_Puff_Right = ParseFloat(sranipalValues, "Cheek_Puff_Right", "CheekPuffRight");
+                Cheek_Puff_Left = ParseFloat(sranipalValues, "Cheek_Puff_Left", "CheekPuffLeft");
+                Cheek_Suck = ParseFloat(sranipalValues, "Cheek_Suck", "CheekSuck");
+                Mouth_Upper_UpRight = ParseFloat(sranipalValues, "Mouth_Upper_UpRight", "MouthUpperUpRight");
+                Mouth_Upper_UpLeft = ParseFloat(sranipalValues, "Mouth_Upper_UpLeft", "MouthUpperUpLeft");
+                Mouth_Lower_DownRight = ParseFloat(sranipalValues, "Mouth_Lower_DownRight", "MouthLowerDownRight");
+                Mouth_Lower_DownLeft = ParseFloat(sranipalValues, "Mouth_Lower_DownLeft", "MouthLowerDownLeft");
                 float.TryParse(sranipalValues["Mouth_Upper_Inside"], out Mouth_Upper_Inside); // NOT CURRENTLY USED
                 float.TryParse(sranipalValues["Mouth_Lower_Inside"], out Mouth_Lower_Inside); // NOT CURRENTLY USED
                 float.TryParse(sranipalValues["Mouth_Lower_Overlay"], out Mouth_Lower_Overlay); // NOT CURRENTLY USED
-                float.TryParse(sranipalValues["Tongue_LongStep1"], out Tongue_LongStep1);
-                float.TryParse(sranipalValues["Tongue_Up"], out Tongue_Up);
-                float.TryParse(sranipalValues["Tongue_Left"], out Tongue_Left);
-                float.TryParse(sranipalValues["Tongue_Right"], out Tongue_Right);
-                float.TryParse(sranipalValues["Tongue_Down"], out Tongue_Down);
-                float.TryParse(sranipalValues["Tongue_Roll"], out Tongue_Roll);
-                float.TryParse(sranipalValues["Tongue_LongStep2"], out Tongue_LongStep2);
+                Tongue_LongStep1 = ParseFloat(sranipalValues, "Tongue_LongStep1", "TongueInOut", "Tongue_InOut");
+                Tongue_Up = ParseFloat(sranipalValues, "Tongue_Up", "TongueUp");
+                Tongue_Left = ParseFloat(sranipalValues, "Tongue_Left", "TongueLeft");
+                Tongue_Right = ParseFloat(sranipalValues, "Tongue_Right", "TongueRight");
+                Tongue_Down = ParseFloat(sranipalValues, "Tongue_Down", "TongueDown");
+                Tongue_Roll = ParseFloat(sranipalValues, "Tongue_Roll", "TongueRoll");
+                Tongue_LongStep2 = ParseFloat(sranipalValues, "Tongue_LongStep2", "TongueStep2");
+
+                float tongueX = ParseFloat(sranipalValues, "Tongue_X", "TongueX");
+                if (tongueX > 0) Tongue_Right = tongueX; else if (tongueX < 0) Tongue_Left = -tongueX;
+                float tongueY = ParseFloat(sranipalValues, "Tongue_Y", "TongueY");
+                if (tongueY > 0) Tongue_Up = tongueY; else if (tongueY < 0) Tongue_Down = -tongueY;
                 float.TryParse(sranipalValues["Tongue_UpRight_Morph"], out Tongue_UpRight_Morph); // NOT CURRENTLY USED
                 float.TryParse(sranipalValues["Tongue_UpLeft_Morph"], out Tongue_UpLeft_Morph); // NOT CURRENTLY USED
                 float.TryParse(sranipalValues["Tongue_DownRight_Morph"], out Tongue_DownRight_Morph); // NOT CURRENTLY USED
@@ -110,15 +124,15 @@ namespace FacialTrackerVamPlugin
                 if (sranipalValues.HasKey("Eye_Y_Left")) float.TryParse(sranipalValues["Eye_Y_Left"], out Eye_Y_Left);
                 if (sranipalValues.HasKey("Eye_X_Right")) float.TryParse(sranipalValues["Eye_X_Right"], out Eye_X_Right);
                 if (sranipalValues.HasKey("Eye_Y_Right")) float.TryParse(sranipalValues["Eye_Y_Right"], out Eye_Y_Right);
-                if (sranipalValues.HasKey("Eye_Blink_Left")) float.TryParse(sranipalValues["Eye_Blink_Left"], out Eye_Blink_Left);
-                if (sranipalValues.HasKey("Eye_Blink_Right")) float.TryParse(sranipalValues["Eye_Blink_Right"], out Eye_Blink_Right);
-                if (sranipalValues.HasKey("Eye_Squint_Left")) float.TryParse(sranipalValues["Eye_Squint_Left"], out Eye_Squint_Left);
-                if (sranipalValues.HasKey("Eye_Squint_Right")) float.TryParse(sranipalValues["Eye_Squint_Right"], out Eye_Squint_Right);
-                if (sranipalValues.HasKey("Brow_Down_Left")) float.TryParse(sranipalValues["Brow_Down_Left"], out Brow_Down_Left);
-                if (sranipalValues.HasKey("Brow_Down_Right")) float.TryParse(sranipalValues["Brow_Down_Right"], out Brow_Down_Right);
-                if (sranipalValues.HasKey("Brow_Inner_Up")) float.TryParse(sranipalValues["Brow_Inner_Up"], out Brow_Inner_Up);
-                if (sranipalValues.HasKey("Brow_Outer_Up_Left")) float.TryParse(sranipalValues["Brow_Outer_Up_Left"], out Brow_Outer_Up_Left);
-                if (sranipalValues.HasKey("Brow_Outer_Up_Right")) float.TryParse(sranipalValues["Brow_Outer_Up_Right"], out Brow_Outer_Up_Right);
+                Eye_Blink_Left = ParseFloat(sranipalValues, "Eye_Blink_Left", "EyeBlink_L", "EyeBlinkLeft");
+                Eye_Blink_Right = ParseFloat(sranipalValues, "Eye_Blink_Right", "EyeBlink_R", "EyeBlinkRight");
+                Eye_Squint_Left = ParseFloat(sranipalValues, "Eye_Squint_Left", "EyeSquint_L", "EyeSquintLeft");
+                Eye_Squint_Right = ParseFloat(sranipalValues, "Eye_Squint_Right", "EyeSquint_R", "EyeSquintRight");
+                Brow_Down_Left = ParseFloat(sranipalValues, "Brow_Down_Left", "BrowD_L", "BrowDownLeft");
+                Brow_Down_Right = ParseFloat(sranipalValues, "Brow_Down_Right", "BrowD_R", "BrowDownRight");
+                Brow_Inner_Up = ParseFloat(sranipalValues, "Brow_Inner_Up", "BrowU_C", "BrowInnerUp");
+                Brow_Outer_Up_Left = ParseFloat(sranipalValues, "Brow_Outer_Up_Left", "BrowU_L", "BrowOuterUpLeft");
+                Brow_Outer_Up_Right = ParseFloat(sranipalValues, "Brow_Outer_Up_Right", "BrowU_R", "BrowOuterUpRight");
             }
             catch (Exception e)
             {

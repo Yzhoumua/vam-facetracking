@@ -1,3 +1,4 @@
+
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace FacialTrackerVamPlugin
         // eventually these might be user-editable via UI controls
         // reduce tongue extension; SRanipal step2 spans roughly 0-1 so divide by
         // a larger factor to keep the physical tongue length reasonable
-        private static float factorDivisorTongueStep2 = 6f;
+        private static float factorDivisorTongueStep2 = 4f;
         private static float factorDivisorTongueUp = 1;
         private static float factorMultiplierMouthOpen = 1.9f;
         private static float factorMultiplierMouthFrown = 1.5f;
@@ -25,7 +26,7 @@ namespace FacialTrackerVamPlugin
         // global multiplier to allow easy tuning of the overall intensity
         private static float factorGlobal = 1f;
         // dedicated multiplier for jaw forward to avoid extreme mouth offsets
-        private static float factorMultiplierJawForward = 1f;
+        private static float factorMultiplierJawForward = 0.4f;
 
         private MVRScript script;
 
@@ -163,7 +164,6 @@ namespace FacialTrackerVamPlugin
             _setMorphValue(DAZMorphLibrary.TongueInOut, vInOut * factorGlobal);
             _setMorphValue(DAZMorphLibrary.TongueLength, vLength * factorGlobal);
             _setMorphValue(DAZMorphLibrary.TongueRaiseLower, vRaiseLower * factorGlobal);
-
             _setMorphValue(DAZMorphLibrary.TongueUpDown, vRaiseLower * 0.5f * factorGlobal);
             _setMorphValue(DAZMorphLibrary.TongueRoll1, vRoll * factorGlobal * 2.5f);
             _setMorphValue(DAZMorphLibrary.TongueRoll2, vRoll * factorGlobal * 2.5f);
@@ -172,7 +172,6 @@ namespace FacialTrackerVamPlugin
             _setMorphValue(DAZMorphLibrary.TongueCenterDip, vRoll * factorGlobal * 2.5f);
             _setMorphValue(DAZMorphLibrary.TongueTwist, vRoll * factorGlobal * 2.5f);
             _setMorphValue(DAZMorphLibrary.TongueSideSide, vSideSide * factorGlobal);
-
 
         }
 
