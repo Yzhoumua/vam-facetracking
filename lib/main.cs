@@ -121,6 +121,20 @@ namespace FacialTrackerVamPlugin
                 isProcessing = false; // done processing
             }
         }
+        public void Update()
+        {
+            try
+            {
+                if (initFinished && !isProcessing)
+                {
+                    morphMappers._runAll();
+                }
+            }
+            catch (Exception e)
+            {
+                SuperController.LogError($"{nameof(MyPlugin)}.{nameof(Update)}: {e}");
+            }
+        }
 
         public void startServer()
         {
