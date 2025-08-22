@@ -39,6 +39,7 @@ namespace FacialTrackerVamPlugin
         public static DAZMorph BrowDown_R;
         public static DAZMorph BrowInnerUp;
         public static DAZMorph BrowOuterUp_L;
+
         public static DAZMorph BrowOuterUp_R;
 
         public static DAZMorph TongueSideSide;
@@ -175,7 +176,6 @@ namespace FacialTrackerVamPlugin
                     "Jackaroo.JarModularExpressions.2:/Custom/Atom/Person/Morphs/female/Jackaroo/JaRExpressions1.2/EyeSquint_L.vmi",
                     "EyeSquint_L"
 				);
-
 
                 BrowDown_L = _initMorph(
                     "Jackaroo.JarModularExpressions.2:/Custom/Atom/Person/Morphs/female/Jackaroo/JaRExpressions1.2/BrowD_L.vmi",

@@ -13,7 +13,10 @@ namespace FacialTrackerVamPlugin
         {
             foreach (var k in keys)
             {
-                if (node.HasKey(k) && float.TryParse(node[k], out float v)) return v;
+
+                float v;
+                if (node.HasKey(k) && float.TryParse(node[k], out v)) return v;
+
             }
             return 0f;
         }
