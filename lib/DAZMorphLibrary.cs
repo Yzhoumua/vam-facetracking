@@ -40,9 +40,12 @@ namespace FacialTrackerVamPlugin
         public static DAZMorph BrowInnerUp;
         public static DAZMorph BrowOuterUp_L;
         public static DAZMorph BrowOuterUp_R;
-		
-		
-        public static DAZMorph TongueSideSide;		
+
+        public static DAZMorph TongueSideSide;
+        public static DAZMorph TongueLeft;
+        public static DAZMorph TongueRight;
+        public static DAZMorph TongueUp;
+        public static DAZMorph TongueDown;
 
         // Other properties
         private static GenerateDAZMorphsControlUI morphUI;
@@ -137,6 +140,22 @@ namespace FacialTrackerVamPlugin
                 TongueRaiseLower = _initMorph("Tongue Raise-Lower");
                 TongueRoll2 = _initMorph("Tongue Roll 2");
                 TongueSideSide = _initMorph("Tongue Side-Side");
+                TongueLeft = _initMorph(
+                    "Jackaroo.JarModularExpressions.2:/Custom/Atom/Person/Morphs/female/Jackaroo/JaRExpressions1.2/TongueLeft.vmi",
+                    "Tongue Left"
+                );
+                TongueRight = _initMorph(
+                    "Jackaroo.JarModularExpressions.2:/Custom/Atom/Person/Morphs/female/Jackaroo/JaRExpressions1.2/TongueRight.vmi",
+                    "Tongue Right"
+                );
+                TongueUp = _initMorph(
+                    "Jackaroo.JarModularExpressions.2:/Custom/Atom/Person/Morphs/female/Jackaroo/JaRExpressions1.2/TongueUp.vmi",
+                    "Tongue Up"
+                );
+                TongueDown = _initMorph(
+                    "Jackaroo.JarModularExpressions.2:/Custom/Atom/Person/Morphs/female/Jackaroo/JaRExpressions1.2/TongueDown.vmi",
+                    "Tongue Down"
+                );
 				
 				//added
 				JawChew = _initMorph(
